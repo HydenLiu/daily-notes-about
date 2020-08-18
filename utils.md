@@ -19,7 +19,7 @@ changeTree(val) {
 
 ### 图片加载失败时
 
-``` vue
+``` js
 // page 代码
 <img :src="imgUrl" @error="handleError" alt="">
 <script>
@@ -67,7 +67,7 @@ div{
 
 ###  时间格式化
 
-``` vue
+``` js
 filters: {
       dateFormat: function (times) {
         if (!times) return '';
