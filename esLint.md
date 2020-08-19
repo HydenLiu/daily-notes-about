@@ -18,6 +18,14 @@ module.exports = {
   extends: ['plugin:vue/base', 'plugin:@typescript-eslint/recommended','plugin:vue/recommended', 'eslint:recommended'],
 
   rules: {
+    'indent': 'off', 
+      'vue/script-indent': [
+          'error',
+          2,
+          {
+              'baseIndent': 1
+          }
+      ],
     "vue/max-attributes-per-line": [2, {
       "singleline": 10,
       "multiline": {
@@ -57,9 +65,6 @@ module.exports = {
       'after': true
     }],
     'handle-callback-err': [2, '^(err|error)$'],
-    'indent': [2, 2, {
-      'SwitchCase': 1
-    }],
     'jsx-quotes': [2, 'prefer-single'],
     'key-spacing': [2, {
       'beforeColon': false,
@@ -237,6 +242,14 @@ module.exports = {
 	// "warn" -> 1 开启警告规则
 	//"error" -> 2 开启错误规则
 	rules: {
+		'indent': 'off', //新加了这句缩进为0
+		'vue/script-indent': [ //新加了这句脚本缩进2空格
+			'error',
+			2,
+			{
+				'baseIndent': 1
+			}
+		],
 		'vue/max-attributes-per-line': [2, {
 			'singleline': 10,
 			'multiline': {
@@ -292,9 +305,6 @@ module.exports = {
 			'after': true
 		}],
 		'handle-callback-err': [0, '^(err|error)$'],// 强制执行回调错误处理
-		'indent': [2, 2, {// 强制执行一致的缩进
-			'SwitchCase': 1
-		}],
 		'jsx-quotes': [2, 'prefer-single'],// 强制在JSX文件中一致使用单引号
 		'key-spacing': [2, { //对象字面量中冒号的前后空格
 			'beforeColon': false,
