@@ -211,20 +211,31 @@ div{
 ### 下载文件
 
 ``` js
-// 首先创建数据对象, url链接
-const data = {hello: "world"};
-// 创建Blob并指定mine类型
-const blob = new Blob([JSON.stringify(data)], {type: "text/plain"});
-// 文件名命名
-const fileName = `${new Date().valueOf()}.doc`;
-// 创建a标签，指定标签通过createObjectURL关联blob对象
-const link = document.createElement('a');
-link.href = window.URL.createObjectURL(blob);
-// 通过download属性规定下载文件名
-link.download = fileName;
-// click触发下载
-link.click();
-// 通过revokeObjectURL释放url对象
-window.URL.revokeObjectURL(link.href);
+//文件名必须加上文件后缀
+export function onPercentage(url, fileName) {
+  axios({
+    url,
+    responseType: 'blob',
+  }).then(res => {
+    //顺便写一下用blob 格式接收文件
+    const blob = new Blob([res.data],{ type: res.type });
+    if ("download" in document.createElement("a")) {
+      // 非IE下载
+      const elink = document.createElement("a");
+      elink.download = fileName;
+      elink.style.display = "none";
+      elink.href = window.URL.createObjectURL(blob);
+      document.body.appendChild(elink);
+      elink.click();
+      URL.revokeObjectURL(elink.href); // 释放URL 对象
+      document.body.removeChild(elink);
+    } else {
+      // IE10+下载
+      navigator.msSaveBlob(blob, fileName);
+    }
+  }).catch(error => {
+    console.log(error)
+  })
+}
 ```
 
