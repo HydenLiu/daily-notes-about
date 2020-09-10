@@ -196,3 +196,35 @@ export function toggleClass(element, className) {
 }
 ```
 
+### 多行文本溢出显示省略号
+
+```css
+div{
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+```
+
+### 下载文件
+
+``` js
+// 首先创建数据对象, url链接
+const data = {hello: "world"};
+// 创建Blob并指定mine类型
+const blob = new Blob([JSON.stringify(data)], {type: "text/plain"});
+// 文件名命名
+const fileName = `${new Date().valueOf()}.doc`;
+// 创建a标签，指定标签通过createObjectURL关联blob对象
+const link = document.createElement('a');
+link.href = window.URL.createObjectURL(blob);
+// 通过download属性规定下载文件名
+link.download = fileName;
+// click触发下载
+link.click();
+// 通过revokeObjectURL释放url对象
+window.URL.revokeObjectURL(link.href);
+```
+
