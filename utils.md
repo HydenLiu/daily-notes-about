@@ -252,3 +252,4 @@ export function onPercentage(url, fileName) {
 * 看完原型图和效果图，将能公用的按钮或者是其他表单元素提取出来(例如：选择器)，弹窗组件
 * 记得添加格式化css, scss颜色常用颜色用变量， 还有公用的fiex，position提前做好
 * loading组件
+* 时间格式化
