@@ -196,9 +196,16 @@ export function toggleClass(element, className) {
 }
 ```
 
-### 多行文本溢出显示省略号
+### 文本溢出显示省略号
 
 ```css
+//单行
+div{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+//多行
 div{
   overflow : hidden;
   text-overflow: ellipsis;
