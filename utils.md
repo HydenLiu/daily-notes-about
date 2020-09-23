@@ -246,10 +246,32 @@ export function onPercentage(url, fileName) {
 }
 ```
 
-### 写项目前必看的想法
+### 转换成数字
 
-* 用class的方式封装接口
-* 看完原型图和效果图，将能公用的按钮或者是其他表单元素提取出来(例如：选择器)，弹窗组件
-* 记得添加格式化css, scss颜色常用颜色用变量， 还有公用的fiex，position提前做好
-* loading组件
-* 时间格式化
+``` js
+//将输入值转换为数字。如果转换失败，则返回原始字符串。
+function toNumber (val){
+  const n = parseFloat(val)
+  return isNaN(n) ? val : n
+}
+```
+
+### 回到顶部
+
+``` js
+const scrollToTop = _ => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop; //获取到顶端的距离
+        if (c > 0) {
+            window.requestAnimationFrame(scrollToTop);//滚动动画效果
+            window.scrollTo(0, c - c / 8);
+        }
+};
+```
+
+### 取两个日期之间相差的天数
+
+``` js
+const getDaysDiffBetweenDates = (beginDate, endDate) => ( endDate - beginDate) / (1000 _ 3600 _ 24);
+// getDaysDiffBetweenDates(new Date("2020-09-22"), new Date("2020-10-01")) -> 9
+```
+
