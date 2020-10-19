@@ -275,3 +275,9 @@ const getDaysDiffBetweenDates = (beginDate, endDate) => ( endDate - beginDate) /
 // getDaysDiffBetweenDates(new Date("2020-09-22"), new Date("2020-10-01")) -> 9
 ```
 
+### 数组扁平化
+
+``` js
+ arr.flat(Infinity)
+```
+
