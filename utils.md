@@ -271,7 +271,10 @@ const scrollToTop = _ => {
 ### 取两个日期之间相差的天数
 
 ``` js
-const getDaysDiffBetweenDates = (beginDate, endDate) => ( endDate - beginDate) / (1000 _ 3600 _ 24);
+const getDaysDiffBetweenDates = (beginDate, endDate) => {
+  let timestamp = new Date(endDate) - new Date(beginDate)
+  return timestamp / 1000 / 60 / 60 / 24
+};
 // getDaysDiffBetweenDates(new Date("2020-09-22"), new Date("2020-10-01")) -> 9
 ```
 
