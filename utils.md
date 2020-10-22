@@ -284,3 +284,10 @@ const getDaysDiffBetweenDates = (beginDate, endDate) => {
  arr.flat(Infinity)
 ```
 
+### CSS 调整字间距(letter-spacing)
+
+``` css
+h1 {letter-spacing:2px}
+h2 {letter-spacing:-3px}
+```
+
