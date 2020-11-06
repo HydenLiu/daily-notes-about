@@ -16,6 +16,7 @@
   }
   ```
 
-  
 
-  
+【2】问题：npm install 提示权限不足
+
+* 解决办法 : ` npm install --unsafe-perm`
