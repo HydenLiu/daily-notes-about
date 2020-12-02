@@ -256,6 +256,24 @@ function toNumber (val){
 }
 ```
 
+### 整数转数组
+
+```js
+const convertToArray = number => [...`${number}`].map(el => parseInt(el))
+
+convertToArray(5678); // [5, 6, 7, 8]
+```
+
+### 创建一级对象的键值对数组
+
+``` js
+const keyValuePairsToArray = object => Object.keys(object).map(el => [el, object[el]]);
+
+keyValuePairsToArray({ Better: 4, Programming: 2});
+// [['Better', 4], ['Programming', 2]]
+
+```
+
 ### 回到顶部
 
 ``` js
