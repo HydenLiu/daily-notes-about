@@ -309,3 +309,43 @@ h1 {letter-spacing:2px}
 h2 {letter-spacing:-3px}
 ```
 
+### 一层数组改为多层数组
+
+``` js
+let arr = [
+    { pId: '-1', id: '0', name: '父级1' },
+    { pId: '0', id: '1', name: '父级1-1' },
+    { pId: '0', id: '2', name: '父级1-2' },
+    { pId: '2', id: '21', name: '子级21' },
+  ]
+
+function buildTree (arr) {
+  let temp = {}
+  let tree = {}
+  // 数组转 键值对, 所有想都在这里，键是id，值是item本身
+  arr.forEach(item => {
+    temp[item.id] = item
+  })
+
+  let tempKeys = Object.keys(temp)
+  tempKeys.forEach(key => {
+    // 获取当前项
+    let item = temp[key]
+    // 当前项 pId
+    let _itemPId = item.pId
+    // 获取父级项
+    let parentItemByPid = temp[_itemPId]
+    if (parentItemByPid) {
+      if (!parentItemByPid.children) {
+        parentItemByPid.children = []
+      }
+      parentItemByPid.children.push(item)
+    } else {
+      tree[item.id] = item
+    }
+  })
+  // 对象转数组并返回
+  return Object.keys(tree).map(key => tree[key])
+}
+```
+
