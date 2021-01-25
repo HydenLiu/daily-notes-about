@@ -349,3 +349,10 @@ function buildTree (arr) {
 }
 ```
 
+### 字符串比较
+
+``` js
+// localeCompare
+areaData.sort((a, b) => a.registerDate.localeCompare(b.registerDate))
+```
+
