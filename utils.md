@@ -31,7 +31,7 @@ export default{
   },
   methods:{
     handleError(e){
-      e.target.src = reqiure('图片路径') //当然如果项目配置了transformToRequire,参考上面 27.2
+      e.target.src = reqiure('图片路径') // 加载失败时的图片路径
     }
   }
 }
@@ -210,7 +210,7 @@ div{
   overflow : hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2; // 文本显示行数
   -webkit-box-orient: vertical;
 }
 ```
