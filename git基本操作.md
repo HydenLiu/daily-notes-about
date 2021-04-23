@@ -57,3 +57,22 @@ esc // 推出插入
 :wq // 退出
 ```
 
+# 四、同时上传到github和gitee
+
+``` 
+1、删除git默认远程库的名称
+git remote rm origin
+```
+
+``` 
+2、分别关联gitee和github
+git remote add gitee 'gitee项目地址'
+git remote add github 'github项目地址'
+```
+
+``` 
+3、推送
+git push gitee master
+git push github master
+```
+

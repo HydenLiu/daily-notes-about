@@ -224,7 +224,7 @@ export function onPercentage(url, fileName) {
     url,
     responseType: 'blob',
   }).then(res => {
-    //顺便写一下用blob 格式接收文件
+    //用blob 格式接收文件
     const blob = new Blob([res.data],{ type: res.type });
     if ("download" in document.createElement("a")) {
       // 非IE下载
