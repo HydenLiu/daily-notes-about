@@ -76,3 +76,8 @@ git push gitee master
 git push github master
 ```
 
+``` 
+4、查看关联的仓库
+git remote -v
+```
+
