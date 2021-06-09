@@ -356,3 +356,15 @@ function buildTree (arr) {
 areaData.sort((a, b) => a.registerDate.localeCompare(b.registerDate))
 ```
 
+### 判断数组内容的id是否连续
+
+``` js
+// arr = [{id: 1}, {id: 3}]
+const flag = arr.every((item, index, array) => {
+      if (index !== array.length - 1) {
+        return item.id + 1 === array[index + 1].id
+      }
+      return true
+    })
+```
+
