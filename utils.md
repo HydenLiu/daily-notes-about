@@ -65,7 +65,7 @@ div{
 }
 ```
 
-###  时间格式化
+###  js原生时间格式化
 
 ``` js
 //一般的时间格式话
@@ -366,5 +366,18 @@ const flag = arr.every((item, index, array) => {
       }
       return true
     })
+```
+
+### 中划线将 驼峰式 命名的属性改为 下划线 式
+
+``` js
+let obj = {
+  myPlay: 12
+}
+
+let newObj = {}
+for (let key in obj) {
+  newObj[key.replace(/([A-Z])/g, "_$1").toLowerCase()] = obj[key]
+};
 ```
 
