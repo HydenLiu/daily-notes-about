@@ -8,7 +8,12 @@ myPlugin.install = (Vue, options) => {
     Vue.myGlobalMethod = () => {
         ......
     }   
-       
+        
+    // 全局filter
+    Vue.filter('filterName', ()=>{})
+    
+    // 全局实例方法
+    Vue.prototype.functionName = () => {}
 }
 export default myPlugin
 ```
