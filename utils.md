@@ -381,3 +381,17 @@ for (let key in obj) {
 };
 ```
 
+### 打乱数组的方法
+
+``` js
+const arr = [0,1,2,3,4,5,6,7,8,9]
+arr.sort( () => Math.random() - 0.5 )
+```
+
+### 数组中随机选一个数
+
+``` js
+const arr = [0,1,2,3,4,5,6,7,8,9]
+arr[ Math.floor(Math.random() * arr.length) ]
+```
+
