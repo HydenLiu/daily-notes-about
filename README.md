@@ -3,7 +3,7 @@
 #### 用于记录平时容易忘记的，和遇到的一些方法
 
 * [eslint的基本配置和解释](esLint.md)
-* [git 的一些基本用法](git基本操作.md)
+* [git 的一些基本用法](git基本操作和npm.md)
 * [element-utils](element_utils.md)
   * clickoutside.js 点击空白触发方法
   * 上传附件
