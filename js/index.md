@@ -266,7 +266,46 @@ const getDaysDiffBetweenDates = (beginDate, endDate) => {
 ### 数组扁平化
 
 ``` js
- arr.flat(Infinity)
+// es6
+arr.flat(Infinity);
+
+// es5
+function flatFun(arr){
+    while (arr.some(Array.isArray)){
+        arr = [].concat(...crr)
+    }
+    return arr
+}
+```
+
+### 数组去重
+
+``` js
+// es6
+[...new Set(arr)]
+
+// es5
+function unique(arr){
+    return arr.filter((item,index, array) => array.includes(item) === index)
+}
+```
+
+### 函数柯里化
+
+``` js
+function add(){
+    const args = [...arguments]
+    function adder(){
+        args.push(...arguments)
+        return adder
+    }
+    adder.toString = function() {
+        return args.reduce((a, b)=>{
+            return a + b
+        }, 0)
+    }
+    return adder
+}
 ```
 
 ### 一层数组改为多层数组
