@@ -402,3 +402,14 @@ function fn(n, m){
 }
 ```
 
+### 快捷生成指定长度的数组
+
+``` js
+// 1
+Array.from(new Array(10).keys())
+// 2
+Array.from({length: 10}, (v, k) => k)
+// 3
+Array.from(Array(10), (v, k) => k)
+```
+
