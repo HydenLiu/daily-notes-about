@@ -6,10 +6,10 @@
 
 * [git 的一些基本用法](git基本操作和npm.md)
 
-* [element-utils](element_utils.md)
-  * clickoutside.js 点击空白触发方法
-  * 上传附件
-  * 重置message弹窗
+* [element-utils](./element-ui/element_utils.md)
+  * [clickoutside.js 点击空白触发方法](./element-ui/element_utils.md#一clickoutsidejs)
+  * [上传附件](./element-ui/element_utils.md#二上传附件)
+  * [重置message弹窗](./element-ui/element_utils.md#三重置message弹窗)
   
 * [css](./css/index.md)
 
