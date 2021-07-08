@@ -182,7 +182,7 @@ export function toggleClass(element, className) {
 }
 ```
 
-### 下载文件
+### axios下载文件
 
 ``` js
 //文件名必须加上文件后缀
