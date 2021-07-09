@@ -367,7 +367,7 @@ const flag = arr.every((item, index, array) => {
     })
 ```
 
-### 中划线将 驼峰式 命名的属性改为 下划线 式
+### 中划线将(驼峰式)命名的属性改为(下划线)式
 
 ``` js
 let obj = {
