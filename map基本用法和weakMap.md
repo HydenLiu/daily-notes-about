@@ -66,4 +66,10 @@
   console.log(map.size) //1
   ```
 
-  
+
+### weakMap
+
+* Map和WeakMap的主要区别：
+  1. Map对象的键可以是任何类型，但WeakMap对象中的键只能是对象引用
+  2. WeakMap不能包含无引用的对象，否则会被自动清除出集合（垃圾回收机制）。
+  3. WeakSet对象是不可枚举的，无法获取大小。 
