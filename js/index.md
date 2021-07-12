@@ -413,3 +413,9 @@ Array.from({length: 10}, (v, k) => k)
 Array.from(Array(10), (v, k) => k)
 ```
 
+### sleep睡眠延迟方法
+
+``` js
+const sleep = (time) => new Promise(resolve => setTimeout(resolve, time) )
+```
+
