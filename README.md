@@ -40,7 +40,7 @@
   * [数组中随机选一个数](./js/index.md#数组中随机选一个数)
   * [从n到m的一个随机整数](./js/index.md#从n到m的一个随机整数)
   * [快捷生成指定长度的数组](./js/index.md#快捷生成指定长度的数组)
-  * [sleep睡眠延迟方法]('./js/index.md#sleep睡眠延迟方法')
+  * [sleep睡眠延迟方法](./js/index.md#sleep睡眠延迟方法)
   
 * [vue全局插件配置](vue全局插件.md)
 
