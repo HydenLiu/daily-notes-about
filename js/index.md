@@ -355,6 +355,31 @@ function buildTree (arr) {
 areaData.sort((a, b) => a.registerDate.localeCompare(b.registerDate))
 ```
 
+### replace和replaceAll
+
+``` js
+// 方法解释：
+// 两种方法都返回一个新字符串，原始字符串保持不变。并且改方法可以传两个参数：
+
+// 参数一：pattern。 pattern 可以是一个 字符串 或一个 正则表达式，
+// 参数二：replacement。 replacement 可以是一个字符串或一个在每次匹配被调用的函数。
+
+// 当参数 pattern 类型不同时有区别：
+// 当 pattern 是字符串时，replace 只替换匹配到的第一个位置，replaceAll 会替换每一个匹配到的地方。
+
+
+let value = "123-456-789";
+let pattern = "-";
+value.replace(pattern, ""); // 123456-789
+value.replaceAll(pattern, ""); // 123456789
+
+let value = "123-456-789";
+value.replace(/-/g, ""); // 123456789
+value.replaceAll(/-/g, ""); // 123456789
+```
+
+
+
 ### 判断数组内容的id是否连续
 
 ``` js
