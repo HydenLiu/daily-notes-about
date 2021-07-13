@@ -308,7 +308,7 @@ function add(){
 }
 ```
 
-### 一层数组改为多层数组
+### 扁平化数据结构转Tree
 
 ``` js
 let arr = [
@@ -318,6 +318,7 @@ let arr = [
     { pId: '2', id: '21', name: '子级21' },
   ]
 
+// 1
 function buildTree (arr) {
   let temp = {}
   let tree = {}
@@ -345,6 +346,24 @@ function buildTree (arr) {
   })
   // 对象转数组并返回
   return Object.keys(tree).map(key => tree[key])
+}
+
+// 2
+function convert(list){
+    const res = []
+    const map = list.reduce((res, v) => (res[v.id] = v, res), {})
+    for (const item of list){
+        if(item.pId === 0){
+            res.push(item);
+            continue;
+        }
+        if(item.pId in map){
+            const parent = map[item.Pid]
+            parent.children = parent.children || []
+            parent.children.push(item)
+        }
+    }
+    return res
 }
 ```
 

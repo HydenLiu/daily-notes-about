@@ -32,7 +32,7 @@
   * [数组扁平化](./js/index.md#数组扁平化)
   * [数组去重](./js/index.md#数组去重)
   * [函数柯里化](./js/index.md#函数柯里化)
-  * [一层数组变多层数组](./js/index.md#一层数组变多层数组)
+  * [扁平化数据结构转Tree](./js/index.md#扁平化数据结构转Tree)
   * [字符串比较](./js/index.md#字符串比较)
   * [replace和replaceAll](./js/index.md#replace和replaceAll)
   * [判断数组内容的id是否连续](./js/index.md#判断数组内容的id是否连续)
