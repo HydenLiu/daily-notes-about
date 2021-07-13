@@ -34,6 +34,7 @@
   * [函数柯里化](./js/index.md#函数柯里化)
   * [一层数组变多层数组](./js/index.md#一层数组变多层数组)
   * [字符串比较](./js/index.md#字符串比较)
+  * [replace和replaceAll](./js/index.md#replace和replaceAll)
   * [判断数组内容的id是否连续](./js/index.md#判断数组内容的id是否连续)
   * [中划线将驼峰命名的属性改为下划线命名](./js/index.md#中划线将(驼峰式)命名的属性改为(下划线)式)
   * [打乱数组的方法](./js/index.md#打乱数组的方法)
