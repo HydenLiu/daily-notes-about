@@ -353,12 +353,12 @@ function convert(list){
     const res = []
     const map = list.reduce((res, v) => (res[v.id] = v, res), {})
     for (const item of list){
-        if(item.pId === 0){
+        if(item.pId === '0'){
             res.push(item);
             continue;
         }
         if(item.pId in map){
-            const parent = map[item.Pid]
+            const parent = map[item.pId]
             parent.children = parent.children || []
             parent.children.push(item)
         }
