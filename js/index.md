@@ -272,7 +272,7 @@ arr.flat(Infinity);
 // es5
 function flatFun(arr){
     while (arr.some(Array.isArray)){
-        arr = [].concat(...crr)
+        arr = [].concat(...arr)
     }
     return arr
 }
