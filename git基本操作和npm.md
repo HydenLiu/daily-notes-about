@@ -24,6 +24,7 @@ git remote add origin 'url地址'
 
 ```bash
 git pull origin  master --allow-unrelated-histories
+git fetch 
 ```
 
 ### 提交代码到远程
