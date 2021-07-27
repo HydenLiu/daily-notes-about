@@ -1,6 +1,6 @@
 ## vue中使用websocket
 
-``` js
+``` vue
 export default {
     data(){
         return {
@@ -11,7 +11,7 @@ export default {
         this.init()
     },
     methods:{
-        itit(){
+        init(){
 			if (typeof (WebSocket) === "undefined") {
 				// this.$message.error("你的浏览器不支持websocket，无法获取消息，请升级浏览器或者换其他浏览器")
 				return
