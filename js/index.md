@@ -457,6 +457,14 @@ Array.from({length: 10}, (v, k) => k)
 Array.from(Array(10), (v, k) => k)
 ```
 
+### 判读两个数组里的值是否相等
+
+``` js
+isEqualArr(arr1, arr2){
+    return arr1.length === arr2.length && arr1.every(v => arr2.indexOf(v) >= 0)
+}
+```
+
 ### sleep睡眠延迟方法
 
 ``` js
