@@ -208,11 +208,27 @@ module.exports = {
 }
 ```
 
+### 在vue中配置
+
+``` js
+chainWebpack(config) {
+    config
+      .module
+      .rule('eslint')
+      .use('eslint-loader')
+      .loader('eslint-loader')
+      .tap(options => {
+        options.fix = true
+        return options
+      })
+}
+```
+
 
 
 ### 对应的解释
 
-```
+```js
 //语法解释
 module.exports = {
 	
