@@ -28,7 +28,7 @@
 			v-loading="loading"
 			class="upload-demo-main"
 			ref="newupload"
-			action=""
+			action
 			:show-file-list="showFileList"
 			:on-change="handChange"
 			:auto-upload="false"
@@ -144,4 +144,117 @@ const resetMessage = ( options ) => {
 })
 export const message = resetMessage
 ```
+### element表头固定
+``` js
+let listenAction
+export default {
+  inserted: function(el) {
+    const elHead = el.getElementsByClassName('el-table__header-wrapper')[0]
+    let elFixed = []
+    let elCell = []
 
+    const stickyTop = 50 // navbar 的高度，表头要在它下面
+    const elStyle = elHead.style
+    const zIndex = 1000
+
+    // 初始化sticky定位
+    elStyle.position = '-webkit-sticky'
+    elStyle.position = 'sticky'
+
+    // 获取表格距离顶部的高度
+    const elTop = el.getBoundingClientRect().top
+
+    // 初始化行内css
+    elStyle.cssText = `top: ${stickyTop}px; z-index: ${zIndex}`
+
+    // 是否要处于固定定位
+    let active = false
+
+    const getScroll = (target, top) => {
+      const prop = top ? 'pageYOffset' : 'pageXOffset'
+      const method = top ? 'scrollTop' : 'scrollLeft'
+      let ret = target[prop]
+      if (typeof ret !== 'number') {
+        ret = window.document.documentElement[method]
+      }
+      return ret
+    }
+
+    // 固定定位时处理
+    const sticky = () => {
+      if (active) {
+        return
+      }
+
+      // 表格自身的宽高
+      const elWidth = el.getBoundingClientRect().width
+
+      elStyle.position = 'fixed'
+      elStyle.width = `${elWidth}px`
+      elStyle.borderTop = '1px solid #dfe6ec'
+      // 去掉fixed效果
+      elCell = elHead.querySelectorAll('.is-hidden')
+      if (elCell.length > 0) {
+        [...elCell].forEach(element => {
+          element.classList.remove('is-hidden')
+        })
+      }
+
+      elFixed = el.querySelectorAll('.el-table__fixed-body-wrapper')
+      if (elFixed.length > 0) {
+        elFixed.forEach(element => {
+          element.classList.add('top0')
+        })
+      }
+
+      active = true
+    }
+
+    // 重置回原来
+    const reset = () => {
+      if (!active) {
+        return
+      }
+
+      elStyle.position = ''
+      elStyle.borderTop = ''
+      elStyle.width = ''
+
+      if (elCell.length > 0) {
+        elCell.forEach(element => {
+          element.classList.add('is-hidden')
+        })
+      }
+      if (elFixed.length > 0) {
+        elFixed.forEach(element => {
+          element.classList.remove('top0')
+        })
+      }
+      active = false
+    }
+
+    const check = () => {
+      const scrollTop = getScroll(window, true)
+      const offsetTop = el.getBoundingClientRect().top
+      if (offsetTop <= 0) {
+        sticky()
+      } else {
+        if (scrollTop < elTop + stickyTop) {
+          reset()
+        }
+      }
+    }
+
+    listenAction = () => {
+      check()
+    }
+
+    window.addEventListener('scroll', listenAction)
+  },
+
+  unbind() {
+    window.removeEventListener('scroll', listenAction)
+  }
+}
+
+```

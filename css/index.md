@@ -55,3 +55,27 @@ visibility:hidden、display:none、z-index=-1、opacity：0
 8. width:0;height:0;overflow:hidden;
 ```
 
+### style.scss
+* 使用当前文件下的style.scss时，需要在vue.config.js里面配置
+``` js
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const glob = require('glob-all');
+const path = require('path');
+module.exports = {
+  chainWebpack(config) {
+    config
+    .plugin('Purgecss')
+    .use(PurgecssPlugin, [{
+      paths: glob.sync([
+        path.join(__dirname, './public/index.html'),
+        path.join(__dirname, './**/*.vue'),
+        path.join(__dirname, './src/**/*.js')
+      ], { nodir: true }),
+      whitelist: ['html', 'body'],
+      whitelistPatterns: [/el-.*/,/is-.*/,/v-(modal|bind)$/, /-(leave|enter|appear)(|-(to|from|active))$/, /^(?!cursor-move).+-move$/, /^router-link(|-exact)-active$/],
+      whitelistPatternsChildren: [/^token/, /^pre/, /^code/]
+    }])
+    .end()
+  }
+}
+```

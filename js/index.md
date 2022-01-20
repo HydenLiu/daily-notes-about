@@ -471,3 +471,17 @@ isEqualArr(arr1, arr2){
 const sleep = (time) => new Promise(resolve => setTimeout(resolve, time) )
 ```
 
+### js 将数字转成 k w 方式显示
+```js
+export function formatNumber(num = 0) {
+  return num >= 1e3 && num < 1e4 ? (num / 1e3).toFixed(1) + 'k' : num >= 1e4 ? (num / 1e4).toFixed(1) + 'w' : num
+}
+```
+
+### 判断两个数组内容是否一样
+```js
+allSignType() {
+  const arr = [0, 1, 2]
+  return this.searchForm.sign_type.length === arr.length && this.searchForm.sign_type.every((v, i) => v === arr[i])
+}
+```

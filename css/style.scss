@@ -1,0 +1,251 @@
+$colors: (
+  'gray':#999999,
+  'gray-1':#DCDFE6,
+  'gray-2':#F4F4F4,
+  'gray-3':#eeeeee,
+  'gray-6': #C0C4CC,
+  'gray-7': #F4F6F8,
+  'whilt':#FFFFFF,
+  'black': #000,
+  'black-1': #666,
+  'black-2': #333,
+  'danger':#F05D6F,
+  'blue': #0091FF,
+  'blue-1': #91D5FF,
+  'blue-2': #E6F7FF,
+  'faild': #c1c1c1,
+  'success': #67C23A
+  );
+$border-color: map-get($colors, 'light-1');
+// font size
+$base-font-size: 1rem;
+$font-sizes: (xxxs:1.111,
+  xxs: 0.6154,
+  xs: 0.7692,
+  sm: 0.9231,
+  md: 1,
+  lg: 1.0769,
+  lmg:1.15,
+  xl: 1.2308,
+  xxl:1.384615,
+  xxxl:1.846154);
+$flex-jc: (start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+);
+$flex-ai: (start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch,
+);
+// spacing
+
+// 0-5: 0
+// .mt-1  => margin top  .pb-2
+$spacing-types: (m: margin,
+  p: padding,
+);
+$spacing-directions: (t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+$spacing-base-size: 1rem;
+$spacing-sizes: (0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 1,
+  4: 1.5,
+  5: 3,
+  6: 3.5,
+  7: 4,
+  8: 4.5,
+  9: 5,
+  10: 5.5,
+);
+
+
+
+
+@each $colorKey,
+$color in $colors {
+  .text-#{$colorKey} {
+    color: $color !important;
+  }
+
+  .bg-#{$colorKey} {
+    background-color: $color !important;
+  }
+  .border-c-#{$colorKey}{
+    border-color: $color !important;
+  }
+}
+
+// text align
+@each $var in (left, center, right) {
+  .text-#{$var} {
+    text-align: $var !important;
+  }
+}
+
+
+@each $sizeKey,
+$size in $font-sizes {
+  .fs-#{$sizeKey} {
+    font-size: $size * $base-font-size;
+    line-height: $size * $base-font-size;
+  }
+}
+
+
+// width, height border-radius
+@for $i from 0 to 1001 {
+  .flex-#{$i} {
+    flex: #{$i};
+  }
+
+  .w-#{$i} {
+    width: #{ 1% * $i};
+  }
+  .lh-px-#{$i} {
+    @if $i == 0   { line-height: normal !important;   };
+    @if $i != 0 {  line-height: #{$i}px !important; };
+  }
+  .w-px-#{$i}{
+    width: #{$i}px !important;
+  }
+  .h-px-#{$i}{
+    height: #{$i}px !important;
+  }
+  .h-#{$i} {
+    height: #{ 1% * $i};
+  }
+  .br-#{$i}{
+    border-radius: #{1% * $i};
+  }
+  .vh-#{$i} {
+    height: #{$i}vh;
+  }
+
+  .vw-#{$i} {
+    width: #{$i}vw;
+  }
+}
+
+@each $key,
+$value in $flex-jc {
+  .jc-#{$key} {
+    justify-content: $value !important;
+  }
+}
+
+@each $key,
+$value in $flex-ai {
+  .ai-#{$key} {
+    align-items: $value !important;
+  }
+}
+
+//flex 1-100
+@for $i from 1 to 100 {
+  .flex-#{$i} {
+    flex: #{$i}
+  }
+  .fs-#{$i} {
+    font-size: #{$i}px !important;
+  }
+}
+
+
+@each $var in (0,100,200,300,400,500,600, 700, 800,900,bold,bolder) {
+  .fw-#{$var}{
+    @if $var == 0   { font-weight: normal !important;   }
+    @if $var != 0 { font-weight: #{$var} !important; }
+  }
+}
+
+
+@for $i from 1 to 50{
+  .br-px-#{$i}{
+    border-radius:#{$i}px !important;
+  }
+}
+
+
+// m-0, mx-0
+@each $typeKey,
+$type in $spacing-types {
+
+  @for $i from 1 to 1001 {
+    .#{$typeKey}-px-#{$i} {
+      #{$type}:#{$i}px !important;
+    }
+  }
+
+  // .m-1
+  @each $sizeKey,
+  $size in $spacing-sizes {
+    .#{$typeKey}-#{$sizeKey} {
+      #{$type}: $size * $spacing-base-size !important;
+    }
+  }
+
+  // .mx-1 , .my-1
+  @each $sizeKey,
+  $size in $spacing-sizes {
+    .#{$typeKey}x-#{$sizeKey} {
+      #{$type}-left: $size * $spacing-base-size !important;
+      #{$type}-right: $size * $spacing-base-size !important;
+    }
+
+    .#{$typeKey}y-#{$sizeKey} {
+      #{$type}-top: $size * $spacing-base-size !important;
+      #{$type}-bottom: $size * $spacing-base-size !important;
+    }
+  }
+
+  // mx-px-1
+
+  @for $i from 1 to 1001 {
+    .#{$typeKey}x-px-#{$i} {
+      #{$type}-left: #{$i}px !important;
+      #{$type}-right: #{$i}px !important;
+    }
+    .#{$typeKey}y-px-#{$i} {
+      #{$type}-top: #{$i}px !important;
+      #{$type}-bottom: #{$i}px !important;
+    }
+  }
+
+  // .mt-1
+  @each $directionKey,
+  $direction in $spacing-directions {
+    @each $sizeKey,
+    $size in $spacing-sizes {
+      .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+        #{$type}-#{$direction}: $size * $spacing-base-size !important;
+      }
+    }
+
+    @for $i from 1 to 1001 {
+      .#{$typeKey}#{$directionKey}-px-#{$i} {
+        #{$type}-#{$direction}: #{$i}px !important;
+      }
+
+    }
+
+  }
+}
+
+
+.text-blue{
+  color:#009bff
+}
+.text-red{
+  color:#ff4242
+}
+.text-gray{
+  color:#848383
+}
