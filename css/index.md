@@ -21,11 +21,11 @@ div{
 }
 //多行
 div{
-  overflow : hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; // 文本显示行数
+  overflow: hidden;
+  /*! autoprefixer: off; */
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 ```
 
