@@ -42,7 +42,7 @@ h2 {letter-spacing:-3px}
 visibility:hidden、display:none、z-index=-1、opacity：0
 1.opacity：0; // 该元素隐藏起来了，但不会改变页面布局，并且，如果该元素已经绑定了一些事件，如click事件也能触发
 2.visibility:hidden; // 该元素隐藏起来了，但不会改变页面布局，但是不会触发该元素已经绑定的事件
-3.display:node; // 把元素隐藏起来，并且会改变页面布局，可以理解成在页面中把该元素删掉
+3.display:none; // 把元素隐藏起来，并且会改变页面布局，可以理解成在页面中把该元素删掉
 
 4. z-index:-1000; // 将元素隐藏不占据空间，会改变页面布局，不能进行交互事件
 
