@@ -40,6 +40,9 @@ git commit -m "第一次git init后提交"
 ```cpp
 // 第一次push，指定远程分支。-u参数表示将当前本地分支与远程分支绑定。那么以后push就不用再加远程分支名了
 git push -u origin master
+
+// push默认分支
+git push --set-upstream origin master
 ```
 
 ## 二、git 贴标签
