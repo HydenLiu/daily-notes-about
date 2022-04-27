@@ -27,6 +27,16 @@ git pull origin  master --allow-unrelated-histories
 git fetch 
 ```
 
+### 重新修改commit的信息
+``` bash
+git commit --amend
+```
+
+### 修改分支名称
+``` bash
+git branch -m '分支名称'
+```
+
 ### 提交代码到远程
 
 ```csharp
