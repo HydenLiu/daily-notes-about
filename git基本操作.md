@@ -27,9 +27,16 @@ git pull origin  master --allow-unrelated-histories
 git fetch 
 ```
 
+### git add . 和 git commit -m 合并操作
+```bash
+git commit -am 'xxx'
+```
+
 ### 重新修改commit的信息
-``` bash
+``` js
 git commit --amend
+// 对上一条提交的信息的描述进行修改
+git commit --amend -m "xxxx"
 ```
 
 ### 修改分支名称
@@ -47,7 +54,7 @@ git add .
 git commit -m "第一次git init后提交"
 ```
 
-```cpp
+```js
 // 第一次push，指定远程分支。-u参数表示将当前本地分支与远程分支绑定。那么以后push就不用再加远程分支名了
 git push -u origin master
 
@@ -99,14 +106,5 @@ git remote -v
 
 
 
-# npm 发布相关
 
-``` 
-1、npm login // 然后输入账户名、密码、邮箱
-  // 注意：登录要切换为原来的源 npm config set registry https://registry.npmjs.org/
-2、npm publish // 发布
-3、npm unpublish 包名 --force  // 删除包
-4、npm link // 本地项目和本地npm模块建立连接，在本地进行模块测试
-5、npm unlink // 解除项目和模块link, 注意：npm包发布后，下载远程包前先执行npm unlink解除本地项目link
-```
 
