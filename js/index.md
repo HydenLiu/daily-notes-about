@@ -55,20 +55,18 @@ getFileName(url) {
 
 ``` js
 //一般的时间格式话
-filters: {
-      dateFormat: function (times) {
-        if (!times) return '';
-        var time = new Date(times * 1000);
-        var y = time.getFullYear();
-        var m = time.getMonth() + 1 < 10 ? 0 + '' + (time.getMonth() + 1) : time.getMonth() + 1;
-        var d = time.getDate() < 10 ? 0 + '' + time.getDate() : time.getDate();
-        var h = time.getHours() < 10 ? 0 + '' + time.getHours() : time.getHours();
-        var mm = time.getMinutes() < 10 ? 0 + '' + time.getMinutes() : time.getMinutes();
-        var s = time.getSeconds() < 10 ? 0 + '' + time.getSeconds() : time.getSeconds();
-        return y + '-' + m + '-' + d + ' ' + h + ':' + mm + ':' + s;
-      },
+function dateFormat(times) {
+  if (!times) return '';
+  const time = new Date(times * 1000);
+  const y = time.getFullYear();
+  const m = time.getMonth() + 1 < 10 ? 0 + '' + (time.getMonth() + 1) : time.getMonth() + 1;
+  const d = time.getDate() < 10 ? 0 + '' + time.getDate() : time.getDate();
+  const h = time.getHours() < 10 ? 0 + '' + time.getHours() : time.getHours();
+  const mm = time.getMinutes() < 10 ? 0 + '' + time.getMinutes() : time.getMinutes();
+  const s = time.getSeconds() < 10 ? 0 + '' + time.getSeconds() : time.getSeconds();
+  return y + '-' + m + '-' + d + ' ' + h + ':' + mm + ':' + s;
+},
 
-    },
         
 /**
  * 时间格式化添加格式
