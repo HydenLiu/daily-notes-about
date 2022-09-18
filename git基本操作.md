@@ -104,7 +104,15 @@ git push github master
 git remote -v
 ```
 
+## 清除缓存
+- 如果是之前已经提交了，后面又加到了.gitignore文件里面，但是忽略功能不生效，就要清除git本地缓存
+``` git
+git rm -r --cached .
 
+git add .
+
+git commit -m 'update .gitignore'
+```
 
 
 
