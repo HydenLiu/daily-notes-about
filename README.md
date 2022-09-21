@@ -12,7 +12,7 @@
   * [重置message弹窗](./element-ui/element_utils.md#三重置message弹窗)
   
 * [css](./css/index.md)
-* [双击字体不选中](./css/index.md#双击字体不选中)
+  * [双击字体不选中](./css/index.md#双击字体不选中)
   * [文本溢出显示省略号](./css/index.md#文本溢出显示省略号)
   * [css调整字间距](./css/index.md#css-调整字间距letter-spacing)
   * [元素隐藏或消失的方法](./css/index.md#元素隐藏或消失的方法)
