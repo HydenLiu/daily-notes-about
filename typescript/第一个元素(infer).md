@@ -16,6 +16,7 @@
   ```
   
   > 原文：https://tsch.js.org/14/zh-CN
+  > infer参考链接: https://jkchao.github.io/typescript-book-chinese/tips/infer.html
 */
 
 
