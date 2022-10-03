@@ -2,17 +2,17 @@
 
 ```js
 changeTree(val) {
-        if (val) {
-          val.forEach((item, index) => {
-            if (item.children === '') {
-              item.children = []
-            } else {
-              this.changeTree(item.children);
-            }
-          });
-        }
-        return val;
-      },
+  if (val) {
+    val.forEach((item, index) => {
+      if (item.children === '') {
+        item.children = []
+      } else {
+        this.changeTree(item.children);
+      }
+    });
+  }
+  return val;
+},
 ```
 
 
@@ -44,11 +44,11 @@ export default{
 
 ``` js
 getFileName(url) {
-        if (url) {
-          let string = url.substring(url.lastIndexOf('/') + 1);
-          return string
-        }
-      },
+  if (url) {
+    let string = url.substring(url.lastIndexOf('/') + 1);
+    return string
+  }
+},
 ```
 
 ###  js原生时间格式化
@@ -243,11 +243,11 @@ keyValuePairsToArray({ Better: 4, Programming: 2});
 
 ``` js
 const scrollToTop = _ => {
-    const c = document.documentElement.scrollTop || document.body.scrollTop; //获取到顶端的距离
-        if (c > 0) {
-            window.requestAnimationFrame(scrollToTop);//滚动动画效果
-            window.scrollTo(0, c - c / 8);
-        }
+const c = document.documentElement.scrollTop || document.body.scrollTop; //获取到顶端的距离
+  if (c > 0) {
+      window.requestAnimationFrame(scrollToTop);//滚动动画效果
+      window.scrollTo(0, c - c / 8);
+  }
 };
 ```
 
@@ -269,10 +269,10 @@ arr.flat(Infinity);
 
 // es5
 function flatFun(arr){
-    while (arr.some(Array.isArray)){
-        arr = [].concat(...arr)
-    }
-    return arr
+  while (arr.some(Array.isArray)){
+      arr = [].concat(...arr)
+  }
+  return arr
 }
 ```
 
@@ -284,7 +284,7 @@ function flatFun(arr){
 
 // es5
 function unique(arr){
-    return arr.filter((item,index, array) => array.includes(item) === index)
+  return arr.filter((item,index, array) => array.includes(item) === index)
 }
 ```
 
@@ -292,17 +292,17 @@ function unique(arr){
 
 ``` js
 function add(){
-    const args = [...arguments]
-    function adder(){
-        args.push(...arguments)
-        return adder
-    }
-    adder.toString = function() {
-        return args.reduce((a, b)=>{
-            return a + b
-        }, 0)
-    }
-    return adder
+  const args = [...arguments]
+  function adder(){
+      args.push(...arguments)
+      return adder
+  }
+  adder.toString = function() {
+      return args.reduce((a, b)=>{
+          return a + b
+      }, 0)
+  }
+  return adder
 }
 ```
 
@@ -310,11 +310,11 @@ function add(){
 
 ``` js
 let arr = [
-    { pId: '-1', id: '0', name: '父级1' },
-    { pId: '0', id: '1', name: '父级1-1' },
-    { pId: '0', id: '2', name: '父级1-2' },
-    { pId: '2', id: '21', name: '子级21' },
-  ]
+  { pId: '-1', id: '0', name: '父级1' },
+  { pId: '0', id: '1', name: '父级1-1' },
+  { pId: '0', id: '2', name: '父级1-2' },
+  { pId: '2', id: '21', name: '子级21' },
+]
 
 // 1
 function buildTree (arr) {
@@ -348,20 +348,20 @@ function buildTree (arr) {
 
 // 2
 function convert(list){
-    const res = []
-    const map = list.reduce((res, v) => (res[v.id] = v, res), {})
-    for (const item of list){
-        if(item.pId === '0'){
-            res.push(item);
-            continue;
-        }
-        if(item.pId in map){
-            const parent = map[item.pId]
-            parent.children = parent.children || []
-            parent.children.push(item)
-        }
-    }
-    return res
+  const res = []
+  const map = list.reduce((res, v) => (res[v.id] = v, res), {})
+  for (const item of list){
+      if(item.pId === '0'){
+          res.push(item);
+          continue;
+      }
+      if(item.pId in map){
+          const parent = map[item.pId]
+          parent.children = parent.children || []
+          parent.children.push(item)
+      }
+  }
+  return res
 }
 ```
 
@@ -402,11 +402,11 @@ value.replaceAll(/-/g, ""); // 123456789
 ``` js
 // arr = [{id: 1}, {id: 3}]
 const flag = arr.every((item, index, array) => {
-      if (index !== array.length - 1) {
-        return item.id + 1 === array[index + 1].id
-      }
-      return true
-    })
+  if (index !== array.length - 1) {
+    return item.id + 1 === array[index + 1].id
+  }
+  return true
+})
 ```
 
 ### 中划线将(驼峰式)命名的属性改为(下划线)式

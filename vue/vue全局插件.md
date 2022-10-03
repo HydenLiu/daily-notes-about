@@ -4,16 +4,16 @@
 // utils/myPlugin.js
 let myPlugin = {}
 myPlugin.install = (Vue, options) => {
-    //全局方法
-    Vue.myGlobalMethod = () => {
-        ......
-    }   
-        
-    // 全局filter
-    Vue.filter('filterName', ()=>{})
-    
-    // 全局实例方法
-    Vue.prototype.functionName = () => {}
+  //全局方法
+  Vue.myGlobalMethod = () => {
+      ......
+  }   
+      
+  // 全局filter
+  Vue.filter('filterName', ()=>{})
+  
+  // 全局实例方法
+  Vue.prototype.functionName = () => {}
 }
 export default myPlugin
 ```

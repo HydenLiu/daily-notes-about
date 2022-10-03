@@ -2,9 +2,9 @@
 
 #### 用于记录平时容易忘记的，和遇到的一些方法
 
-* [eslint的基本配置和解释](esLint.md)
+* [eslint](https://github.com/sunupdong/eslint-config)
 
-* [git 的一些基本用法](git基本操作和npm.md)
+* [git 的一些基本用法](git基本操作.md)
 
 * [element-utils](./element-ui/element_utils.md)
   * [clickoutside.js 点击空白触发方法](./element-ui/element_utils.md#一clickoutsidejs)
