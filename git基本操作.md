@@ -114,5 +114,14 @@ git add .
 git commit -m 'update .gitignore'
 ```
 
+## pr相关
+``` git
+// 绑定之前fork的仓库
+git remote add upstream '项目地址'
+
+// 然后拉取最新代码
+git pull upstream master
+```
+
 
 
