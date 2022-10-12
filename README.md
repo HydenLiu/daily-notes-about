@@ -43,5 +43,5 @@
   * [快捷生成指定长度的数组](./js/index.md#快捷生成指定长度的数组)
   * [sleep睡眠延迟方法](./js/index.md#sleep睡眠延迟方法)
   
-* [vue全局插件配置](vue全局插件.md)
+* [vue全局插件配置](./vue/vue全局插件.md)
 
