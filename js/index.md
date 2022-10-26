@@ -7,7 +7,7 @@ changeTree(val) {
       if (item.children === '') {
         item.children = []
       } else {
-        this.changeTree(item.children);
+        changeTree(item.children);
       }
     });
   }
@@ -480,6 +480,6 @@ export function formatNumber(num = 0) {
 ```js
 allSignType() {
   const arr = [0, 1, 2]
-  return this.searchForm.sign_type.length === arr.length && this.searchForm.sign_type.every((v, i) => v === arr[i])
+  return searchForm.sign_type.length === arr.length && searchForm.sign_type.every((v, i) => v === arr[i])
 }
 ```
