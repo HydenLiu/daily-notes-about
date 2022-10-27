@@ -31,7 +31,7 @@ export default{
   },
   methods:{
     handleError(e){
-      e.target.src = reqiure('图片路径') // 加载失败时的图片路径
+      e.target.src = require('图片路径') // 加载失败时的图片路径
     }
   }
 }
