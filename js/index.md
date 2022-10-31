@@ -1,4 +1,4 @@
-### 遍历tree结构
+### 遍历 tree 结构
 
 ```js
 changeTree(val) {
@@ -15,59 +15,45 @@ changeTree(val) {
 },
 ```
 
-
-
 ### 图片加载失败时
 
-``` js
-// page 代码
-<img :src="imgUrl" @error="handleError" alt="">
-<script>
-export default{
-  data(){
-    return{
-      imgUrl:''
-    }
-  },
-  methods:{
-    handleError(e){
-      e.target.src = require('图片路径') // 加载失败时的图片路径
-    }
-  }
+```js
+<img src="url" @error="handleError" alt="">
+
+function handleError(e){
+  e.target.src = require('图片路径') // 加载失败时的图片路径
 }
-</script>
 ```
 
+### 截取 url 的文件名
 
-
-### 截取url的文件名
-
-``` js
-getFileName(url) {
-  if (url) {
-    let string = url.substring(url.lastIndexOf('/') + 1);
-    return string
-  }
+```js
+getFileName(url = '') {
+  return url.substring(url.lastIndexOf('/') + 1)
 },
 ```
 
-###  js原生时间格式化
+### js 原生时间格式化
 
-``` js
+```js
 //一般的时间格式话
 function dateFormat(times) {
-  if (!times) return '';
-  const time = times.length === 10 ? new Date(times * 1000) : new Date(times);
-  const y = time.getFullYear();
-  const m = time.getMonth() + 1 < 10 ? 0 + '' + (time.getMonth() + 1) : time.getMonth() + 1;
-  const d = time.getDate() < 10 ? 0 + '' + time.getDate() : time.getDate();
-  const h = time.getHours() < 10 ? 0 + '' + time.getHours() : time.getHours();
-  const mm = time.getMinutes() < 10 ? 0 + '' + time.getMinutes() : time.getMinutes();
-  const s = time.getSeconds() < 10 ? 0 + '' + time.getSeconds() : time.getSeconds();
-  return `${y}-${m}-${d} ${h}:${mm}:${s}`;
+  if (!times) return ''
+  const time = times.length === 10 ? new Date(times * 1000) : new Date(times)
+  const y = time.getFullYear()
+  const m =
+    time.getMonth() + 1 < 10
+      ? 0 + '' + (time.getMonth() + 1)
+      : time.getMonth() + 1
+  const d = time.getDate() < 10 ? 0 + '' + time.getDate() : time.getDate()
+  const h = time.getHours() < 10 ? 0 + '' + time.getHours() : time.getHours()
+  const mm =
+    time.getMinutes() < 10 ? 0 + '' + time.getMinutes() : time.getMinutes()
+  const s =
+    time.getSeconds() < 10 ? 0 + '' + time.getSeconds() : time.getSeconds()
+  return `${y}-${m}-${d} ${h}:${mm}:${s}`
 }
 
-        
 /**
  * 时间格式化添加格式
  * @param {(Object|string|number)} time
@@ -83,10 +69,10 @@ export function parseTime(time, cFormat) {
   if (typeof time === 'object') {
     date = time
   } else {
-    if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
+    if (typeof time === 'string' && /^[0-9]+$/.test(time)) {
       time = parseInt(time)
     }
-    if ((typeof time === 'number') && (time.toString().length === 10)) {
+    if (typeof time === 'number' && time.toString().length === 10) {
       time = time * 1000
     }
     date = new Date(time)
@@ -98,7 +84,7 @@ export function parseTime(time, cFormat) {
     h: date.getHours(),
     i: date.getMinutes(),
     s: date.getSeconds(),
-    a: date.getDay()
+    a: date.getDay(),
   }
   const time_str = format.replace(/{([ymdhisa])+}/g, (result, key) => {
     const value = formatObj[key]
@@ -156,7 +142,7 @@ export function formatTime(time, option) {
 }
 ```
 
-### toggleClass点击添加删除类名
+### toggleClass 点击添加删除类名
 
 ```js
 /**
@@ -180,42 +166,44 @@ export function toggleClass(element, className) {
 }
 ```
 
-### axios下载文件
+### axios 下载文件
 
-``` js
+```js
 //文件名必须加上文件后缀
 export function onPercentage(url, fileName) {
   axios({
     url,
     responseType: 'blob',
-  }).then(res => {
-    //用blob 格式接收文件
-    const blob = new Blob([res.data],{ type: res.type });
-    if ("download" in document.createElement("a")) {
-      // 非IE下载
-      const elink = document.createElement("a");
-      elink.download = fileName;
-      elink.style.display = "none";
-      elink.href = window.URL.createObjectURL(blob);
-      document.body.appendChild(elink);
-      elink.click();
-      URL.revokeObjectURL(elink.href); // 释放URL 对象
-      document.body.removeChild(elink);
-    } else {
-      // IE10+下载
-      navigator.msSaveBlob(blob, fileName);
-    }
-  }).catch(error => {
-    console.log(error)
   })
+    .then((res) => {
+      //用blob 格式接收文件
+      const blob = new Blob([res.data], { type: res.type })
+      if ('download' in document.createElement('a')) {
+        // 非IE下载
+        const elink = document.createElement('a')
+        elink.download = fileName
+        elink.style.display = 'none'
+        elink.href = window.URL.createObjectURL(blob)
+        document.body.appendChild(elink)
+        elink.click()
+        URL.revokeObjectURL(elink.href) // 释放URL 对象
+        document.body.removeChild(elink)
+      } else {
+        // IE10+下载
+        navigator.msSaveBlob(blob, fileName)
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
 ```
 
 ### 转换成数字
 
-``` js
+```js
 //将输入值转换为数字。如果转换失败，则返回原始字符串。
-function toNumber (val){
+function toNumber(val) {
   const n = parseFloat(val)
   return isNaN(n) ? val : n
 }
@@ -224,53 +212,53 @@ function toNumber (val){
 ### 整数转数组
 
 ```js
-const convertToArray = number => [...`${number}`].map(el => parseInt(el))
+const convertToArray = (number) => [...`${number}`].map((el) => parseInt(el))
 
-convertToArray(5678); // [5, 6, 7, 8]
+convertToArray(5678) // [5, 6, 7, 8]
 ```
 
 ### 创建一级对象的键值对数组
 
-``` js
-const keyValuePairsToArray = object => Object.keys(object).map(el => [el, object[el]]);
+```js
+const keyValuePairsToArray = (object) =>
+  Object.keys(object).map((el) => [el, object[el]])
 
-keyValuePairsToArray({ Better: 4, Programming: 2});
+keyValuePairsToArray({ Better: 4, Programming: 2 })
 // [['Better', 4], ['Programming', 2]]
-
 ```
 
 ### 回到顶部
 
-``` js
-const scrollToTop = _ => {
-const c = document.documentElement.scrollTop || document.body.scrollTop; //获取到顶端的距离
+```js
+const scrollToTop = () => {
+  const c = document.documentElement.scrollTop || document.body.scrollTop //获取到顶端的距离
   if (c > 0) {
-      window.requestAnimationFrame(scrollToTop);//滚动动画效果
-      window.scrollTo(0, c - c / 8);
+    window.requestAnimationFrame(scrollToTop) //滚动动画效果
+    window.scrollTo(0, c - c / 8)
   }
-};
+}
 ```
 
 ### 取两个日期之间相差的天数
 
-``` js
+```js
 const getDaysDiffBetweenDates = (beginDate, endDate) => {
   let timestamp = new Date(endDate) - new Date(beginDate)
   return timestamp / 1000 / 60 / 60 / 24
-};
+}
 // getDaysDiffBetweenDates(new Date("2020-09-22"), new Date("2020-10-01")) -> 9
 ```
 
 ### 数组扁平化
 
-``` js
+```js
 // es6
-arr.flat(Infinity);
+arr.flat(Infinity)
 
 // es5
-function flatFun(arr){
-  while (arr.some(Array.isArray)){
-      arr = [].concat(...arr)
+function flatFun(arr) {
+  while (arr.some(Array.isArray)) {
+    arr = [].concat(...arr)
   }
   return arr
 }
@@ -278,37 +266,37 @@ function flatFun(arr){
 
 ### 数组去重
 
-``` js
+```js
 // es6
-[...new Set(arr)]
+;[...new Set(arr)]
 
 // es5
-function unique(arr){
-  return arr.filter((item,index, array) => array.includes(item) === index)
+function unique(arr) {
+  return arr.filter((item, index, array) => array.includes(item) === index)
 }
 ```
 
 ### 函数柯里化
 
-``` js
-function add(){
+```js
+function add() {
   const args = [...arguments]
-  function adder(){
-      args.push(...arguments)
-      return adder
+  function adder() {
+    args.push(...arguments)
+    return adder
   }
-  adder.toString = function() {
-      return args.reduce((a, b)=>{
-          return a + b
-      }, 0)
+  adder.toString = function () {
+    return args.reduce((a, b) => {
+      return a + b
+    }, 0)
   }
   return adder
 }
 ```
 
-### 扁平化数据结构转Tree
+### 扁平化数据结构转 Tree
 
-``` js
+```js
 let arr = [
   { pId: '-1', id: '0', name: '父级1' },
   { pId: '0', id: '1', name: '父级1-1' },
@@ -317,16 +305,16 @@ let arr = [
 ]
 
 // 1
-function buildTree (arr) {
+function buildTree(arr) {
   let temp = {}
   let tree = {}
   // 数组转 键值对, 所有想都在这里，键是id，值是item本身
-  arr.forEach(item => {
+  arr.forEach((item) => {
     temp[item.id] = item
   })
 
   let tempKeys = Object.keys(temp)
-  tempKeys.forEach(key => {
+  tempKeys.forEach((key) => {
     // 获取当前项
     let item = temp[key]
     // 当前项 pId
@@ -343,23 +331,23 @@ function buildTree (arr) {
     }
   })
   // 对象转数组并返回
-  return Object.keys(tree).map(key => tree[key])
+  return Object.keys(tree).map((key) => tree[key])
 }
 
 // 2
-function convert(list){
+function convert(list) {
   const res = []
-  const map = list.reduce((res, v) => (res[v.id] = v, res), {})
-  for (const item of list){
-      if(item.pId === '0'){
-          res.push(item);
-          continue;
-      }
-      if(item.pId in map){
-          const parent = map[item.pId]
-          parent.children = parent.children || []
-          parent.children.push(item)
-      }
+  const map = list.reduce((res, v) => ((res[v.id] = v), res), {})
+  for (const item of list) {
+    if (item.pId === '0') {
+      res.push(item)
+      continue
+    }
+    if (item.pId in map) {
+      const parent = map[item.pId]
+      parent.children = parent.children || []
+      parent.children.push(item)
+    }
   }
   return res
 }
@@ -367,14 +355,14 @@ function convert(list){
 
 ### 字符串比较
 
-``` js
+```js
 // localeCompare
 areaData.sort((a, b) => a.registerDate.localeCompare(b.registerDate))
 ```
 
-### replace和replaceAll
+### replace 和 replaceAll
 
-``` js
+```js
 // 方法解释：
 // 两种方法都返回一个新字符串，原始字符串保持不变。并且改方法可以传两个参数：
 
@@ -384,22 +372,19 @@ areaData.sort((a, b) => a.registerDate.localeCompare(b.registerDate))
 // 当参数 pattern 类型不同时有区别：
 // 当 pattern 是字符串时，replace 只替换匹配到的第一个位置，replaceAll 会替换每一个匹配到的地方。
 
+let value = '123-456-789'
+let pattern = '-'
+value.replace(pattern, '') // 123456-789
+value.replaceAll(pattern, '') // 123456789
 
-let value = "123-456-789";
-let pattern = "-";
-value.replace(pattern, ""); // 123456-789
-value.replaceAll(pattern, ""); // 123456789
-
-let value = "123-456-789";
-value.replace(/-/g, ""); // 123456789
-value.replaceAll(/-/g, ""); // 123456789
+let value = '123-456-789'
+value.replace(/-/g, '') // 123456789
+value.replaceAll(/-/g, '') // 123456789
 ```
 
+### 判断数组内容的 id 是否连续
 
-
-### 判断数组内容的id是否连续
-
-``` js
+```js
 // arr = [{id: 1}, {id: 3}]
 const flag = arr.every((item, index, array) => {
   if (index !== array.length - 1) {
@@ -411,72 +396,78 @@ const flag = arr.every((item, index, array) => {
 
 ### 中划线将(驼峰式)命名的属性改为(下划线)式
 
-``` js
+```js
 let obj = {
-  myPlay: 12
+  myPlay: 12,
 }
 
 let newObj = {}
 for (let key in obj) {
-  newObj[key.replace(/([A-Z])/g, "_$1").toLowerCase()] = obj[key]
-};
+  newObj[key.replace(/([A-Z])/g, '_$1').toLowerCase()] = obj[key]
+}
 ```
 
 ### 打乱数组的方法
 
-``` js
-const arr = [0,1,2,3,4,5,6,7,8,9]
-arr.sort( () => Math.random() - 0.5 )
+```js
+const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+arr.sort(() => Math.random() - 0.5)
 ```
 
 ### 数组中随机选一个数
 
-``` js
-const arr = [0,1,2,3,4,5,6,7,8,9]
-arr[ Math.floor(Math.random() * arr.length) ]
+```js
+const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+arr[Math.floor(Math.random() * arr.length)]
 ```
 
-### 从n到m的随机一个整数
+### 从 n 到 m 的随机一个整数
 
-``` js
-function fn(n, m){
-    return parseInt(Math.random() * (m - n)) + n
+```js
+function fn(n, m) {
+  return parseInt(Math.random() * (m - n)) + n
 }
 ```
 
 ### 快捷生成指定长度的数组
 
-``` js
+```js
 // 1
 Array.from(new Array(10).keys())
 // 2
-Array.from({length: 10}, (v, k) => k)
+Array.from({ length: 10 }, (v, k) => k)
 // 3
 Array.from(Array(10), (v, k) => k)
 ```
 
 ### 判读两个数组里的值是否相等
 
-``` js
+```js
 isEqualArr(arr1, arr2){
     return arr1.length === arr2.length && arr1.every(v => arr2.indexOf(v) >= 0)
 }
 ```
 
-### sleep睡眠延迟方法
+### sleep 睡眠延迟方法
 
-``` js
-const sleep = (time) => new Promise(resolve => setTimeout(resolve, time) )
+```js
+const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time))
 ```
 
 ### js 将数字转成 k w 方式显示
+
 ```js
 export function formatNumber(num = 0) {
-  return num >= 1e3 && num < 1e4 ? (num / 1e3).toFixed(1) + 'k' : num >= 1e4 ? (num / 1e4).toFixed(1) + 'w' : num
+  return num >= 1e3 && num < 1e4
+    ? (num / 1e3).toFixed(1) + 'k'
+    : num >= 1e4
+    ? (num / 1e4).toFixed(1) + 'w'
+    : num
 }
 ```
 
 ### 判断两个数组内容是否一样
+
 ```js
 allSignType() {
   const arr = [0, 1, 2]
