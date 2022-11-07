@@ -297,60 +297,45 @@ function add() {
 ### 扁平化数据结构转 Tree
 
 ```js
-let arr = [
-  { pId: '-1', id: '0', name: '父级1' },
-  { pId: '0', id: '1', name: '父级1-1' },
-  { pId: '0', id: '2', name: '父级1-2' },
-  { pId: '2', id: '21', name: '子级21' },
+const a = [
+  { parentId: 'sdf', name: 'a', id: 'jpi' },
+  { parentId: 'jpi', name: 'b', id: 'jsn' },
+  { parentId: 'jpi', name: 'c', id: 'sdb' },
+  { parentId: 'jsn', name: 'd', id: 'vde' },
+  { parentId: 'vcb', name: 'e', id: 'ee' },
 ]
 
-// 1
-function buildTree(arr) {
-  let temp = {}
-  let tree = {}
-  // 数组转 键值对, 所有想都在这里，键是id，值是item本身
-  arr.forEach((item) => {
-    temp[item.id] = item
+function toTree(arr) {
+  let obj = {}
+  arr.forEach((i) => {
+    obj[i.id] = i
+  })
+  const pIdList = []
+  // 获取到第一层的节点
+  arr.forEach((v) => {
+    if (!obj[v.parentId]) pIdList.push(v.parentId)
   })
 
-  let tempKeys = Object.keys(temp)
-  tempKeys.forEach((key) => {
-    // 获取当前项
-    let item = temp[key]
-    // 当前项 pId
-    let _itemPId = item.pId
-    // 获取父级项
-    let parentItemByPid = temp[_itemPId]
-    if (parentItemByPid) {
-      if (!parentItemByPid.children) {
-        parentItemByPid.children = []
+  function loop(parentId) {
+    return arr.reduce((pre, cur) => {
+      if (cur.parentId === parentId) {
+        cur.children = loop(cur.id)
+        pre.push(cur)
       }
-      parentItemByPid.children.push(item)
-    } else {
-      tree[item.id] = item
-    }
-  })
-  // 对象转数组并返回
-  return Object.keys(tree).map((key) => tree[key])
-}
 
-// 2
-function convert(list) {
-  const res = []
-  const map = list.reduce((res, v) => ((res[v.id] = v), res), {})
-  for (const item of list) {
-    if (item.pId === '0') {
-      res.push(item)
-      continue
-    }
-    if (item.pId in map) {
-      const parent = map[item.pId]
-      parent.children = parent.children || []
-      parent.children.push(item)
-    }
+      return pre
+    }, [])
   }
+  const res = []
+
+  pIdList.forEach((v) => {
+    res.push(...loop(v))
+  })
   return res
 }
+
+const res = toTree(a)
+console.log(res)
 ```
 
 ### 字符串比较
