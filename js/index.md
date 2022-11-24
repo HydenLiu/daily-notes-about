@@ -454,8 +454,45 @@ export function formatNumber(num = 0) {
 ### 判断两个数组内容是否一样
 
 ```js
-allSignType() {
-  const arr = [0, 1, 2]
-  return searchForm.sign_type.length === arr.length && searchForm.sign_type.every((v, i) => v === arr[i])
+allSignType(arr1, arr2) {
+  return arr1.length === arr2.length && arr1.every((v) => arr2.includes(v))
+}
+```
+
+### 文本超出显示省略号和更多
+
+```js
+export function moreLine( { id, rows, content, moreText = 'more' } ) {
+  if (!window || !document) return
+  const boxId = document.getElementById(id);
+  const computedStyle = document.defaultView.getComputedStyle(boxId, null);
+
+  if (!boxId || !computedStyle) return
+
+  const lineHeight = computedStyle.lineHeight;
+  const top = (rows + 1) * parseInt(lineHeight);
+  let tempStr = content;
+  boxId.innerHTML = tempStr;
+  let len = tempStr.length;
+  let i = 0;
+  if (boxId.offsetHeight > top) {
+    let temp = "";
+    boxId.innerHTML = temp;
+    while (boxId.offsetHeight <= top) {
+      temp = tempStr.substring(0, i + 1);
+      i++;
+      boxId.innerHTML = temp;
+    }
+    tempStr = temp.substring(0, temp.length - 1);
+    len = tempStr.length;
+    boxId.innerHTML =
+      tempStr.substring(0, len - moreText.length) + "..." +
+      `<span class="a" style='color: #77BEFF;'> ${moreText}</span>`;
+    boxId.height = top + "rem";
+    let en = document.querySelector(".a")
+    en.onclick = function () {
+      boxId.innerHTML = content;
+    }
+  }
 }
 ```
