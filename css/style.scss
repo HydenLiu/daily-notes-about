@@ -5,7 +5,7 @@ $colors: (
   'gray-3':#eeeeee,
   'gray-6': #C0C4CC,
   'gray-7': #F4F6F8,
-  'whilt':#FFFFFF,
+  'white':#FFFFFF,
   'black': #000,
   'black-1': #666,
   'black-2': #333,
@@ -13,7 +13,7 @@ $colors: (
   'blue': #0091FF,
   'blue-1': #91D5FF,
   'blue-2': #E6F7FF,
-  'faild': #c1c1c1,
+  'failed': #c1c1c1,
   'success': #67C23A
   );
 $border-color: map-get($colors, 'light-1');

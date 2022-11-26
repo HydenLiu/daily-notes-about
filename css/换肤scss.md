@@ -34,7 +34,7 @@ $line-height-base: 1.5 !default;
 $line-height-lg: 2 !default;
 $line-height-sm: 1.25 !default;
 
-// defaule.scss
+// default.scss
 $theme-default: (
   color: $info,
   font-weight: $font-weight-bold,
