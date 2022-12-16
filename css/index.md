@@ -1,12 +1,12 @@
 ### 双击字体不选中
 
-``` css
-div{
-    -moz-user-select:none;/*火狐*/
-    -webkit-user-select:none;/*webkit浏览器*/
-    -ms-user-select:none;/*IE10*/
-    -khtml-user-select:none;/*早期浏览器*/
-      user-select:none;
+```css
+div {
+  -moz-user-select: none; /*火狐*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -ms-user-select: none; /*IE10*/
+  -khtml-user-select: none; /*早期浏览器*/
+  user-select: none;
 }
 ```
 
@@ -14,13 +14,13 @@ div{
 
 ```css
 //单行
-div{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+div {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 //多行
-div{
+div {
   display: -webkit-box;
   overflow: hidden;
   /*! autoprefixer: off; */
@@ -31,14 +31,18 @@ div{
 
 ### CSS 调整字间距(letter-spacing)
 
-``` css
-h1 {letter-spacing:2px}
-h2 {letter-spacing:-3px}
+```css
+h1 {
+  letter-spacing: 2px;
+}
+h2 {
+  letter-spacing: -3px;
+}
 ```
 
 ### 元素隐藏或消失的方法
 
-``` css
+```css
 visibility:hidden、display:none、z-index=-1、opacity：0
 1.opacity：0; // 该元素隐藏起来了，但不会改变页面布局，并且，如果该元素已经绑定了一些事件，如click事件也能触发
 2.visibility:hidden; // 该元素隐藏起来了，但不会改变页面布局，但是不会触发该元素已经绑定的事件
@@ -56,26 +60,40 @@ visibility:hidden、display:none、z-index=-1、opacity：0
 ```
 
 ### style.scss
-* 使用当前文件下的style.scss时，需要在vue.config.js里面配置
-``` js
-const PurgecssPlugin = require('purgecss-webpack-plugin');
-const glob = require('glob-all');
-const path = require('path');
+
+- 使用当前文件下的 style.scss 时，需要在 vue.config.js 里面配置
+
+```js
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const glob = require('glob-all')
+const path = require('path')
 module.exports = {
   chainWebpack(config) {
     config
-    .plugin('Purgecss')
-    .use(PurgecssPlugin, [{
-      paths: glob.sync([
-        path.join(__dirname, './public/index.html'),
-        path.join(__dirname, './**/*.vue'),
-        path.join(__dirname, './src/**/*.js')
-      ], { nodir: true }),
-      whitelist: ['html', 'body'],
-      whitelistPatterns: [/el-.*/,/is-.*/,/v-(modal|bind)$/, /-(leave|enter|appear)(|-(to|from|active))$/, /^(?!cursor-move).+-move$/, /^router-link(|-exact)-active$/],
-      whitelistPatternsChildren: [/^token/, /^pre/, /^code/]
-    }])
-    .end()
-  }
+      .plugin('Purgecss')
+      .use(PurgecssPlugin, [
+        {
+          paths: glob.sync(
+            [
+              path.join(__dirname, './public/index.html'),
+              path.join(__dirname, './**/*.vue'),
+              path.join(__dirname, './src/**/*.js'),
+            ],
+            { nodir: true }
+          ),
+          whitelist: ['html', 'body'],
+          whitelistPatterns: [
+            /el-.*/,
+            /is-.*/,
+            /v-(modal|bind)$/,
+            /-(leave|enter|appear)(|-(to|from|active))$/,
+            /^(?!cursor-move).+-move$/,
+            /^router-link(|-exact)-active$/,
+          ],
+          whitelistPatternsChildren: [/^token/, /^pre/, /^code/],
+        },
+      ])
+      .end()
+  },
 }
 ```

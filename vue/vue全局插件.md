@@ -1,4 +1,4 @@
-* vue统一配置全局插件，全局方法，全局指令，全局mixin，全局实例方法prototype, 全局插槽filter
+* vue2统一配置全局插件，全局方法，全局指令，全局mixin，全局实例方法prototype, 全局插槽filter
 
 ```js
 // utils/myPlugin.js

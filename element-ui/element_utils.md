@@ -90,7 +90,7 @@ export default {
         testmsg === 'ppt',
         testmsg === 'pptx',
       ]
-      const flag = typeArr.some((item) => item === true) //是否含有true
+      const flag = typeArr.some((item) => !!item) //是否含有true
       if (flag) {
         let fd = new FormData()
         fd.append('file', file.raw)

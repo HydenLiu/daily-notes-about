@@ -1,4 +1,4 @@
-## vue中使用websocket
+## vue2中使用websocket
 
 ``` js
 export default {
