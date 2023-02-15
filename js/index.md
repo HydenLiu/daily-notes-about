@@ -279,18 +279,10 @@ function unique(arr) {
 ### 函数柯里化
 
 ```js
-function add() {
-  const args = [...arguments]
-  function adder() {
-    args.push(...arguments)
-    return adder
-  }
-  adder.toString = function () {
-    return args.reduce((a, b) => {
-      return a + b
-    }, 0)
-  }
-  return adder
+function add(...arg) {
+  const f = (...rest) => add(...arg, ...rest)
+  f.valueOf = arg.reduce((a, b) => a + b, 0)
+  return f
 }
 ```
 
@@ -425,14 +417,6 @@ Array.from({ length: 10 }, (v, k) => k)
 Array.from(Array(10), (v, k) => k)
 ```
 
-### 判读两个数组里的值是否相等
-
-```js
-isEqualArr(arr1, arr2){
-    return arr1.length === arr2.length && arr1.every(v => arr2.indexOf(v) >= 0)
-}
-```
-
 ### sleep 睡眠延迟方法
 
 ```js
@@ -462,36 +446,37 @@ allSignType(arr1, arr2) {
 ### 文本超出显示省略号和更多
 
 ```js
-export function moreLine( { id, rows, content, moreText = 'more' } ) {
+export function moreLine({ id, rows, content, moreText = 'more' }) {
   if (!window || !document) return
-  const boxId = document.getElementById(id);
-  const computedStyle = document.defaultView.getComputedStyle(boxId, null);
+  const boxId = document.getElementById(id)
+  const computedStyle = document.defaultView.getComputedStyle(boxId, null)
 
   if (!boxId || !computedStyle) return
 
-  const lineHeight = computedStyle.lineHeight;
-  const top = (rows + 1) * parseInt(lineHeight);
-  let tempStr = content;
-  boxId.innerHTML = tempStr;
-  let len = tempStr.length;
-  let i = 0;
+  const lineHeight = computedStyle.lineHeight
+  const top = (rows + 1) * parseInt(lineHeight)
+  let tempStr = content
+  boxId.innerHTML = tempStr
+  let len = tempStr.length
+  let i = 0
   if (boxId.offsetHeight > top) {
-    let temp = "";
-    boxId.innerHTML = temp;
+    let temp = ''
+    boxId.innerHTML = temp
     while (boxId.offsetHeight <= top) {
-      temp = tempStr.substring(0, i + 1);
-      i++;
-      boxId.innerHTML = temp;
+      temp = tempStr.substring(0, i + 1)
+      i++
+      boxId.innerHTML = temp
     }
-    tempStr = temp.substring(0, temp.length - 1);
-    len = tempStr.length;
+    tempStr = temp.substring(0, temp.length - 1)
+    len = tempStr.length
     boxId.innerHTML =
-      tempStr.substring(0, len - moreText.length) + "..." +
-      `<span class="a" style='color: #77BEFF;'> ${moreText}</span>`;
-    boxId.height = top + "rem";
-    let en = document.querySelector(".a")
+      tempStr.substring(0, len - moreText.length) +
+      '...' +
+      `<span class="a" style='color: #77BEFF;'> ${moreText}</span>`
+    boxId.height = top + 'rem'
+    let en = document.querySelector('.a')
     en.onclick = function () {
-      boxId.innerHTML = content;
+      boxId.innerHTML = content
     }
   }
 }
