@@ -2,7 +2,7 @@
 
 #### 用于记录平时容易忘记的，和遇到的一些方法
 
-* [eslint](https://github.com/sunupdong/eslint-config)
+* [eslint](https://github.com/HydenLiu/eslint-config)
 
 * [git 的一些基本用法](git基本操作.md)
 
