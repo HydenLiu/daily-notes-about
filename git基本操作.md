@@ -8,6 +8,27 @@
 ssh-keygen -t rsa -C '你的邮箱'
 ```
 
+### git 配置
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@your-domain.com"
+```
+
+```bash
+# 设置默认提交分支
+git config --global --add push.default current
+git config --global --add push.autoSetupRemote true
+```
+
+```bash
+# 设置全局忽略文件
+# ~/.gitignore_global
+*~
+.DS_Store
+.idea
+```
+
 ### 本地文件夹执行
 
 ```bash
